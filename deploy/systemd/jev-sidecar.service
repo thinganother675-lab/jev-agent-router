@@ -1,0 +1,23 @@
+[Unit]
+Description=Local TypeSafe Jev decision sidecar
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=jev
+Group=jev
+WorkingDirectory=/opt/jev-agent-router
+EnvironmentFile=/etc/jev-sidecar.env
+ExecStart=/opt/jev-agent-router/.venv/bin/python /opt/jev-agent-router/src/jev_sidecar.py --port 8787
+Restart=on-failure
+RestartSec=3s
+StandardOutput=journal
+StandardError=journal
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+
+[Install]
+WantedBy=multi-user.target
