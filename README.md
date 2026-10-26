@@ -22,7 +22,7 @@ The current implementation supports skill selection and task complexity through 
 - The SIMPLE skill router reached about **95% acceptable accuracy on this project's specific holdout and skill catalog**. This does not establish superiority over other routers in general.
 - Mercury 2.5 was tested as a worker and compactor; it is not the selected primary router.
 - One sidecar was tested with multiple consumers. Claude and Codex should use separate telemetry destinations.
-- Codex hook integration remains experimental. Windows hook execution was not conclusively observed in the lab.
+- User-level Windows shadow hooks now observe new prompts across local Claude Code and Codex projects, with explicit owner consent. Global, resumed and already-open-session calls were verified on 2026-10-21; Claude generation is separately blocked by organization subscription access. See [global operation and evidence](docs/GLOBAL_SHADOW.md).
 - **Active routing is disabled by default.** All integrations should start in shadow mode and fail open.
 
 ## Run locally
